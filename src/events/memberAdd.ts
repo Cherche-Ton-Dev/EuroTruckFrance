@@ -1,7 +1,5 @@
 import { GuildMember, TextChannel, Colors } from "discord.js";
 import { log } from "$utils/log";
-import { addPoints, createOrGetMember } from "$db/api/member";
-import { invitePoints } from "$utils/equations";
 import { botConfig } from "$config";
 
 

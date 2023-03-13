@@ -1,6 +1,6 @@
 import { GuildMember, Message, ComponentType, ButtonStyle } from "discord.js";
 import { addPoints } from "$db/api/member";
-import { bumpPoints, messagePoints } from "$utils/equations";
+import { messagePoints } from "$utils/equations";
 // import { config } from "$context/config";
 
 const lastMessages: Map<string, Date> = new Map();

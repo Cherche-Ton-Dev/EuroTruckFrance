@@ -1,5 +1,4 @@
 import { GuildMember } from "discord.js";
-import { featureContrib } from "$utils/embeds/contrib";
 import { DBMember } from "$db/schemas/member";
 
 export async function getMember(member: GuildMember): Promise<DBMember | null> {
