@@ -35,8 +35,11 @@ export async function createTicket(owner: GuildMember, type: string) {
                 name: owner.user.tag,
                 icon_url: owner.displayAvatarURL(),
             }
-
-
+        },
+        {
+            title: `Pour fermer le ticket`,
+            description: "```\n/close\n```",
+            color: 0xFF0000
         }]
     })
 

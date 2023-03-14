@@ -28,5 +28,9 @@ export async function handleInteractionCreate(interaction: Interaction<CacheType
                 content: `Ton ticket a été crée. ${channel}`,
             })
         }
+    } else if (interaction.isButton()) {
+        if (interaction.customId == "truck-validate-ticket-close" && interaction.member.permissions.has("Administrator")) {
+            await interaction.channel?.delete();
+        }
     }
 }

@@ -1,6 +1,6 @@
 import { botConfig } from "$config";
 import { CommandModule } from "$types/Command";
-import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ComponentType, GuildMember, PermissionFlagsBits, TextChannel } from "discord.js";
+import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ButtonStyle, Colors, ComponentType, GuildMember, PermissionFlagsBits, TextChannel } from "discord.js";
 export default {
     data: {
         name: "close",
@@ -28,7 +28,27 @@ export default {
             return;
         }
 
-
-        await inter.channel.delete();
+        inter.reply({
+            embeds: [{
+                title: "Fermeture du ticket",
+                description: "En attente, cliquez ci dessous pour fermer le ticket.",
+                color: Colors.Blurple
+            }],
+            components: [
+                {
+                    type: ComponentType.ActionRow,
+                    components: [
+                        {
+                            type: ComponentType.Button,
+                            label: "Fermer",
+                            // @ts-ignore
+                            style: ButtonStyle.Danger,
+                            emoji: "🗑️",
+                            custom_id: "truck-validate-ticket-close",
+                        }
+                    ]
+                }
+            ]
+        })
     }
 } as CommandModule;
