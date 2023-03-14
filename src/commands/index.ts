@@ -1,6 +1,6 @@
 import path from "node:path";
 import fs from "node:fs";
-import { Client, REST, Routes } from "discord.js";
+import { Client, Guild, REST, Routes } from "discord.js";
 import assert from "assert";
 import { log } from "$utils/log";
 import { CommandModule } from "$types/Command";
@@ -8,7 +8,7 @@ import { CommandModule } from "$types/Command";
 export const commands = new Map<string, CommandModule>();
 
 
-async function load() {
+export async function loadFunctions(guild: Guild) {
     const commandFiles = fs.readdirSync(__dirname).filter(file => file.match(/^[\w\-_]+(?<!index).ts$/i));
 
     const {
@@ -28,8 +28,7 @@ async function load() {
         const command = require(filePath).default as CommandModule;
 
 
-
-        if ('data' in command && 'execute' in command) {
+        if (command && 'data' in command && 'execute' in command) {
             log("\t", command.data.name, "✅")
             commands.set(command.data.name, command);
         } else {
@@ -41,7 +40,17 @@ async function load() {
         Routes.applicationGuildCommands(APP_ID, GUILD_ID),
         { body: [...commands.values()].map(c => c.data) },
     ) as [];
+
+    for (const command of commands.values()) {
+        if (command.perms) {
+            await guild.commands.permissions.set({
+                command: command.data.name,
+                permissions: command.perms,
+                token: BOT_TOKEN
+            })
+        }
+    }
+
+
     log(data.length, "commands sent");
 }
-
-if (commands.size == 0) load();

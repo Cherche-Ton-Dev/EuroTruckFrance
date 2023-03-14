@@ -8,6 +8,7 @@ import { connectDB } from "$db/init";
 import { handleMemberAdd } from "$events/memberAdd";
 import "$commands/index"
 import { handleInteractionCreate } from "$events/interactionCreate";
+import { loadFunctions } from "$commands/index";
 
 const client = new Discord.Client({
     intents: [
@@ -21,6 +22,11 @@ const client = new Discord.Client({
 
 client.once("ready", async () => {
     log(`🤖 Bot ${client.user?.tag} successfully started 🚀`);
+    const guilds = await client.guilds.fetch();
+    guilds.forEach(async g => {
+        const guild = await g.fetch();
+        loadFunctions(guild);
+    })
 });
 
 client.on("interactionCreate", handleInteractionCreate);
