@@ -3,6 +3,7 @@ import { log } from "$utils/log";
 import { CacheType, GuildMember, Interaction } from "discord.js";
 import assert from "assert";
 import { createTicket } from "$utils/ticket";
+import { botConfig } from "$config";
 
 export async function handleInteractionCreate(interaction: Interaction<CacheType>): Promise<void> {
     if (!(interaction.member instanceof GuildMember)) return;
@@ -29,8 +30,20 @@ export async function handleInteractionCreate(interaction: Interaction<CacheType
             })
         }
     } else if (interaction.isButton()) {
-        if (interaction.customId == "truck-validate-ticket-close" && interaction.member.permissions.has("Administrator")) {
-            await interaction.channel?.delete();
+        if (interaction.member.permissions.has("Administrator")) {
+            if (interaction.customId == "truck-validate-ticket-close") {
+                await interaction.channel?.delete();
+            }
         }
+
+
+        if (interaction.customId == "truck-accept-rules") {
+            await interaction.member.roles.add(botConfig.memberRole);
+            await interaction.reply({
+                content: "Tu as désormais accès au reste du serveur.",
+                ephemeral: true
+            })
+        }
+
     }
 }
