@@ -10,9 +10,7 @@ export default {
 
     execute: async (inter) => {
         inter.reply({
-            content: `
-        Créateur du bot: https://discord.gg/pd7CQ6FmzK
-        `
+            content: `https://beacons.ai/eurotruckfrance`
         })
     }
 } as CommandModule;
