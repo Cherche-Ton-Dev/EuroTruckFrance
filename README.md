@@ -11,13 +11,14 @@
   - [x] /ticket + bouton
   - [x] /close
 - [x] Règlement qui donne le role de @membre une fois avoir appuyer sur le bouton
-- [ ] /lien
+- [x] /lien
 - [x] /partenariat
 - [ ] commandes modérateur
-  - [ ] /warn 
+  - [x] /warn 
   - [ ] /kick 
   - [ ] /ban 
   - [ ] /clear 
+- [ ] Logs
 
 ## Pas important: 
 
