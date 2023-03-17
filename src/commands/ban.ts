@@ -4,19 +4,19 @@ import { CommandModule } from "$types/Command";
 import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ButtonStyle, Colors, ComponentType, GuildMember, PermissionFlagsBits, TextChannel } from "discord.js";
 export default {
     data: {
-        name: "warn",
-        description: "Ajoute un avertissement.",
+        name: "ban",
+        description: "Bannis la personne du serveur.",
         options: [
             {
                 type: ApplicationCommandOptionType.User,
                 name: "cible",
-                description: "a qui s'applique ce warn",
+                description: "a qui s'applique ce ban",
                 required: true
             },
             {
                 type: ApplicationCommandOptionType.String,
                 name: "raison",
-                description: "Raison du warn",
+                description: "Raison du ban",
                 required: true
             },
         ]
@@ -37,13 +37,12 @@ export default {
         const r = inter.options.getString("raison");
         if (!m || !r || !(m instanceof GuildMember)) return;
 
-        await addWarn(m, `${inter.member}: ${r}`);
-        try {
-            await m.send("Tu as reçu un warn: " + r);
-        } catch (_) { }
+        await m.send("Tu as été kick\n" + "```\n" + r + "\n```")
+        await m.ban({
+            reason: r
+        });
 
-        await inter.reply("L'utilisateur a été warn.")
-
+        await inter.reply("L'utilisateur a été ban.");
 
         // TODO: logs
     }

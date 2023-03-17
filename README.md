@@ -6,18 +6,20 @@
 
  ## Progress
 
-- [x] Message de bienvenue dans le channel #bienvenue et privé
+- [ ] Message de bienvenue dans le channel #bienvenue et privé
+  - [x] Version texte
+  - [ ] Image
 - [x] système de ticket
   - [x] /ticket + bouton
   - [x] /close
 - [x] Règlement qui donne le role de @membre une fois avoir appuyer sur le bouton
 - [x] /lien
 - [x] /partenariat
-- [ ] commandes modérateur
+- [x] commandes modérateur
   - [x] /warn 
-  - [ ] /kick 
-  - [ ] /ban 
-  - [ ] /clear 
+  - [x] /kick 
+  - [x] /ban 
+  - [x] /clear 
 - [ ] Logs
 
 ## Pas important: 
