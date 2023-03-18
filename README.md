@@ -20,7 +20,7 @@
   - [x] /kick 
   - [x] /ban 
   - [x] /clear 
-- [ ] Logs
+- [x] Logs
 
 ## Pas important: 
 

@@ -1,6 +1,6 @@
 import { commands } from "$commands";
-import { log } from "$utils/log";
-import { CacheType, GuildMember, Interaction } from "discord.js";
+import { discordLog, log } from "$utils/log";
+import { CacheType, Colors, GuildMember, Interaction, TextChannel } from "discord.js";
 import assert from "assert";
 import { createTicket } from "$utils/ticket";
 import { botConfig } from "$config";
@@ -33,6 +33,16 @@ export async function handleInteractionCreate(interaction: Interaction<CacheType
         if (interaction.member.permissions.has("Administrator")) {
             if (interaction.customId == "truck-validate-ticket-close") {
                 await interaction.channel?.delete();
+                await discordLog(interaction.member, {
+                    title: "Ticket fermé",
+                    description: `${interaction.user} à fermé un ticket`,
+                    author: {
+                        name: interaction.user.tag,
+                        icon_url: interaction.user.displayAvatarURL()
+                    },
+                    timestamp: new Date().toISOString(),
+                    color: Colors.Red
+                });
             }
         }
 

@@ -1,7 +1,8 @@
 import { botConfig } from "$config";
 import { addWarn } from "$db/api/warns";
 import { CommandModule } from "$types/Command";
-import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ButtonStyle, Colors, ComponentType, GuildMember, PermissionFlagsBits, TextChannel } from "discord.js";
+import { discordLog } from "$utils/log";
+import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ButtonStyle, Colors, ComponentType, GuildMember, PermissionFlagsBits, TextChannel, ThreadAutoArchiveDuration } from "discord.js";
 export default {
     data: {
         name: "ban",
@@ -44,6 +45,18 @@ export default {
 
         await inter.reply("L'utilisateur a été ban.");
 
-        // TODO: logs
+        await discordLog(inter.member, {
+            title: "Ban",
+            description: m.user.tag + " á été banni.",
+            author: {
+                name: inter.user.tag,
+                icon_url: inter.user.displayAvatarURL()
+            },
+            thumbnail: {
+                url: m.user.displayAvatarURL(),
+            },
+            timestamp: new Date().toISOString(),
+            color: Colors.Red
+        });
     }
 } as CommandModule;

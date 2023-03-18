@@ -1,6 +1,7 @@
 import { botConfig } from "$config";
 import { addWarn } from "$db/api/warns";
 import { CommandModule } from "$types/Command";
+import { discordLog } from "$utils/log";
 import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ButtonStyle, Colors, ComponentType, GuildMember, PermissionFlagsBits, TextChannel } from "discord.js";
 export default {
     data: {
@@ -45,6 +46,18 @@ export default {
         await inter.reply("L'utilisateur a été warn.")
 
 
-        // TODO: logs
+        await discordLog(inter.member, {
+            title: "Warn",
+            description: `${m.user} á été warn.` + "\n```" + r + "\n```",
+            author: {
+                name: inter.user.tag,
+                icon_url: inter.user.displayAvatarURL()
+            },
+            thumbnail: {
+                url: m.user.displayAvatarURL(),
+            },
+            timestamp: new Date().toISOString(),
+            color: Colors.Red
+        });
     }
 } as CommandModule;

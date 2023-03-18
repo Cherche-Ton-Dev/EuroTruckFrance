@@ -2,6 +2,7 @@ import { botConfig } from "$config";
 import { addWarn } from "$db/api/warns";
 import { CommandModule } from "$types/Command";
 import { getDaysBetweenDates } from "$utils";
+import { discordLog } from "$utils/log";
 import { ApplicationCommandOptionType, ApplicationCommandPermissionType, ButtonStyle, Colors, ComponentType, GuildMember, PermissionFlagsBits, TextChannel, APIInteractionDataResolvedGuildMember } from "discord.js";
 export default {
     data: {
@@ -57,6 +58,15 @@ export default {
 
         await inter.reply(messages.size + cnt + " Messages en cours de suppression.");
 
-        // TODO: logs
+        await discordLog(inter.member, {
+            title: "clear",
+            description: `${inter.user} à clear ${messages.size + cnt} messages` + (m ? " de " + m.user.tag : "") + ` dans ${inter.channel}`,
+            author: {
+                name: inter.user.tag,
+                icon_url: inter.user.displayAvatarURL()
+            },
+            timestamp: new Date().toISOString(),
+            color: Colors.Red
+        });
     }
 } as CommandModule;
