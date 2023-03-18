@@ -1,6 +1,6 @@
 import { commands } from "$commands";
 import { discordLog, log } from "$utils/log";
-import { CacheType, Colors, GuildMember, Interaction, TextChannel } from "discord.js";
+import { ButtonStyle, CacheType, Colors, ComponentType, GuildMember, Interaction, TextChannel } from "discord.js";
 import assert from "assert";
 import { createTicket } from "$utils/ticket";
 import { botConfig } from "$config";
@@ -54,6 +54,5 @@ export async function handleInteractionCreate(interaction: Interaction<CacheType
                 ephemeral: true
             })
         }
-
     }
 }

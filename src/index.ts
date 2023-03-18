@@ -15,7 +15,10 @@ const client = new Discord.Client({
         "Guilds",
         "GuildMessages",
         "DirectMessages",
-        "MessageContent"
+        "MessageContent",
+        "GuildInvites",
+        "GuildPresences",
+        "GuildMembers"
     ],
 });
 
