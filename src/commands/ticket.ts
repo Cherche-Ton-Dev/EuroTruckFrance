@@ -38,25 +38,28 @@ export default {
                                 {
                                     label: `Euro Truck Simulator`,
                                     value: "help-game",
-                                    description: "ceci est la description",
+                                    description: "Problème avec un logiciel (TruckersMP, TrucksBooks, Promods …) ou directement avec le jeu. ",
                                     emoji: `🚚`,
                                     default: false
                                 },
                                 {
                                     label: `Partenariat`,
                                     value: "partenariat",
+                                    description: "Pour une demande de partenariat avec le serveur.",
                                     emoji: `📝`,
                                     default: false
                                 },
                                 {
                                     label: `Report`,
                                     value: "report",
+                                    description: "Problème avec un membre du serveur. ",
                                     emoji: `❌`,
                                     default: false
                                 },
                                 {
                                     label: `Autre `,
                                     value: "other",
+                                    description: "Si aucunes de ces catégories répondent à votre demande.",
                                     emoji: `❓`,
                                     default: false
                                 }

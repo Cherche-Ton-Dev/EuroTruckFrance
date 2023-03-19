@@ -14,19 +14,7 @@ Avec notre lien en partenariat d'instant gaming, vous pouvez obtenir tout les je
 https://www.instant-gaming.com/?igr=eurotruckfrance
 
 **CTD (dev du bot):** https://discord.gg/pd7CQ6FmzK
-        `,
-            components: [
-                {
-                    type: ComponentType.ActionRow,
-                    components: [{
-                        type: ComponentType.Button,
-                        style: ButtonStyle.Link,
-                        label: "Trouve ton bot",
-                        url: "https://discord.gg/pd7CQ6FmzK",
-                        emoji: "🎁"
-                    }]
-                }
-            ]
+        `
         })
     }
 } as CommandModule;
