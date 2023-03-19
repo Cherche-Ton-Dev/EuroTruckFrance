@@ -9,6 +9,7 @@ import { handleMemberAdd } from "$events/memberAdd";
 import "$commands/index"
 import { handleInteractionCreate } from "$events/interactionCreate";
 import { loadFunctions } from "$commands/index";
+import { updateStatus } from "$events/updateStatus";
 
 const client = new Discord.Client({
     intents: [
@@ -30,6 +31,8 @@ client.once("ready", async () => {
         const guild = await g.fetch();
         loadFunctions(guild);
     })
+
+    setInterval(() => updateStatus(client), 1000 * 60 * 10);
 });
 
 client.on("interactionCreate", handleInteractionCreate);
