@@ -41,20 +41,40 @@ export async function handleMemberAdd(
     })
 
     channel.send({
-        // embeds: [
-        //     {
-        //         title: `Bonjour ${member.user.username} !`,
-        //         description: `Bienvenue sur ${member.guild.name}.`,
-        //         color: Colors.Green,
-        //         thumbnail: {
-        //             url:
-        //                 member.user.displayAvatarURL(),
-        //         },
-        //     },
-        // ],
-        content: `Bienvenue ${member}`,
+        content: `**Salut** ${member}, Bienvenue sur **Euro Truck France**. `,
         files: [
             result
         ]
     });
+
+    try {
+        member.send(`
+**Bienvenue sur Euro Truck France**
+
+
+-Pour accéder au reste du serveur merci de bien vouloir réagir au règlement qui se trouve dans le salon #📜│règlement. 
+
+
+-Si vous avez un problème sur le serveur discord ou directement en jeu vous pouvez faire appelle à un @• Helpeur
+ ou a un @• Modérateur.
+
+
+-Vous souhaiter contacter le staff ? Créer un ticket dans le salon #🎫│ticket.
+
+
+-Dans le salon #🛒│boutique
+ vous pouvez trouver les liens pour pouvoir acheter Euro Truck Simulator 2.
+
+
+N'hésitez pas un fait un tour sur le site de notre partenaire **Instant-Gaming** : https://www.instant-gaming.com/?igr=eurotruckfrance 
+Et passez voir __**CTD**__, les créateurs de notre bot pour des sites, bots, ect: https://discord.gg/pd7CQ6FmzK
+
+
+
+
+
+https://discord.gg/zPTt9qkuWX`)
+    } catch (error) {
+
+    }
 }

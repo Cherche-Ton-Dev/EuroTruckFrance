@@ -13,7 +13,8 @@ export async function createTicket(owner: GuildMember, type: string) {
                 id: owner.user.id,
                 allow: ["ViewChannel"],
             }
-        ]
+        ],
+        parent: "865552254190354442"
     })
 
     channel.send({
