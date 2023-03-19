@@ -7,8 +7,11 @@ export default {
         description: "Affiche le bouton pour accepter les règles.",
     },
     execute: async (inter) => {
-        inter.reply({
-            content: `
+        inter.channel?.send({
+            embeds: [
+                {
+                    title: "Règles",
+                    description: `
 Voici les règles à respecter :
 
 \`1.1\` - Merci de bien respecter chaque personne présente sur le Discord.
@@ -26,7 +29,9 @@ Voici les règles à respecter :
 \`1.7\` - Toute demande/forçage envers un membre du serveur (tout genre réuni), est sensible à un ban définitif du Discord (bien sûr, tout dépend de la demande ou du forçage en question).
 
 ⚠️ Si l'une de ses règles n'est pas respecter; le staff se réservera le droit d'appliquer les sanctions; tout de même, si une de vos sanctions vous semble trop abusive pour votre "infraction", le staff vous laissera le droit d'en discuter dans le salon 🎫│ticket
-`,
+`
+                }
+            ],
             components: [
                 {
                     type: ComponentType.ActionRow,

@@ -19,7 +19,7 @@ export default {
         // }
 
 
-        await inter.reply({
+        await inter.channel?.send({
             embeds: [
                 {
                     title: `Ticket`,
