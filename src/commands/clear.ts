@@ -15,12 +15,12 @@ export default {
                 description: "Supprimer les messages d'un utilisateur",
                 required: false
             },
-            // {
-            //     type: ApplicationCommandOptionType.Number,
-            //     name: "nombre",
-            //     description: "Nombre de messages a supprimer.",
-            //     required: false
-            // },
+            {
+                type: ApplicationCommandOptionType.Number,
+                name: "nombre",
+                description: "Nombre de messages a supprimer.",
+                required: false
+            },
         ]
     },
 
@@ -40,7 +40,7 @@ export default {
         if ((m && !(m instanceof GuildMember))) return;
 
         let messages = await inter.channel.messages.fetch({
-            limit: n || 100
+            limit: Math.min(n || 100, 100)
         });
         messages = messages.filter(msg => (m ? msg.author.id == m.id : true));
         let cnt = 0;
