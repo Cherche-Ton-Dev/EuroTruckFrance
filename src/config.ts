@@ -1,5 +1,5 @@
 export const botConfig = {
-    welcomeChanelID: "1005823197171699742",
-    memberRole: "1085985039415791796",
-    logChannelID: "1086638534099742822"
+    welcomeChanelID: "864867690103832579",
+    memberRole: "864877704121024565",
+    logChannelID: "864876319308644362"
 }
