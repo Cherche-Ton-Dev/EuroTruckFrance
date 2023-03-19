@@ -3,7 +3,7 @@ const e = require("node:child_process");
 // e.exec("yarn start");
 // e.fork()
 const child = e.spawn(
-  "C:/Program Files/nodejs/node.exe",
+  "/usr/local/bin/node",
   ["-r", "ts-node/register", "-r", "tsconfig-paths/register", "./src/index.ts"],
   {
     env: { ...process.env, FORCE_COLOR: "1" },
