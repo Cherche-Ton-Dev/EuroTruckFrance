@@ -4,7 +4,9 @@ import { botConfig } from "$config";
 import puppeteer from 'puppeteer';
 import { readFileSync } from "node:fs";
 
-const browser = puppeteer.launch({});
+const browser = puppeteer.launch({
+    args: ["--no-sandbox"]
+});
 const prePage = browser.then(async (b) => {
     const p = await b.newPage()
     await p.setViewport({ width: 1080, height: 1024 });
