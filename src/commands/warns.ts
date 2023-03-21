@@ -20,7 +20,8 @@ export default {
     execute: async (inter) => {
         if (!(inter.member instanceof GuildMember) || !(inter.channel instanceof TextChannel)) return;
 
-        if (!inter.member.roles.cache.has(botConfig.modRole)) {
+        const mem = await inter.member.fetch();
+        if (!mem.roles.cache.has(botConfig.modRole)) {
             await inter.reply({
                 content: "Tu n'as pas la permission d'utiliser cette commande",
                 ephemeral: true
