@@ -24,7 +24,7 @@ export default {
                 {
                     title: `Ticket`,
                     description: `Choisissez la catégorie de votre ticket :`,
-                    color: 0x00FFFF
+                    color: 0x3498db
                 }
             ],
             components: [
