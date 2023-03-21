@@ -12,14 +12,6 @@ export default {
     execute: async (inter) => {
         if (!(inter.member instanceof GuildMember) || !(inter.channel instanceof TextChannel)) return;
 
-        if (!inter.member.permissions.has("Administrator")) {
-            await inter.reply({
-                content: "Tu n'as pas la permission d'utiliser cette commande",
-                ephemeral: true
-            })
-            return;
-        }
-
         if (inter.channel.topic != 'ticket-channel-disposable') {
             await inter.reply({
                 content: "Ce salon n'est pas un ticket",

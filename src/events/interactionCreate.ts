@@ -30,7 +30,7 @@ export async function handleInteractionCreate(interaction: Interaction<CacheType
             })
         }
     } else if (interaction.isButton()) {
-        if (interaction.member.permissions.has("Administrator")) {
+        if (interaction.member.roles.cache.has(botConfig.modRole)) {
             if (interaction.customId == "truck-validate-ticket-close") {
                 await interaction.channel?.delete();
                 await discordLog(interaction.member, {

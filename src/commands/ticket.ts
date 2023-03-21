@@ -11,13 +11,6 @@ export default {
     execute: async (inter) => {
         if (!(inter.member instanceof GuildMember)) return;
 
-        // if (!inter.member.permissions.has("Administrator")) {
-        //     inter.reply({
-        //         content: "Tu n'as pas la permission d'utiliser cette commande"
-        //     })
-        //     return;
-        // }
-
 
         await inter.channel?.send({
             embeds: [

@@ -1,3 +1,4 @@
+import { botConfig } from "$config";
 import { Colors, GuildMember } from "discord.js";
 
 export async function createTicket(owner: GuildMember, type: string) {
@@ -11,6 +12,14 @@ export async function createTicket(owner: GuildMember, type: string) {
             },
             {
                 id: owner.user.id,
+                allow: ["ViewChannel"],
+            },
+            {
+                id: botConfig.helperRole,
+                allow: ["ViewChannel"],
+            },
+            {
+                id: botConfig.modRole,
                 allow: ["ViewChannel"],
             }
         ],
