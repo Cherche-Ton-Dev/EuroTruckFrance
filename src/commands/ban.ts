@@ -47,7 +47,7 @@ export default {
 
         await discordLog(inter.member, {
             title: "Ban",
-            description: m.user.tag + " á été banni.",
+            description: m.user.tag + " á été banni." + "\n```" + r + "\n```",
             author: {
                 name: inter.user.tag,
                 icon_url: inter.user.displayAvatarURL()
